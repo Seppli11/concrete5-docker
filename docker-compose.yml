@@ -3,7 +3,7 @@ version: '3.1'
 
 services:
   concrete5:
-    build: .
+    image: ghcr.io/seppli11/concrete5-docker:main
     ports:
      - 81:80
   db:
