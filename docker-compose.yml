@@ -1,0 +1,22 @@
+# Use root/example as user/password credentials
+version: '3.1'
+
+services:
+  concrete5:
+    build: .
+    ports:
+     - 81:80
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MARIADB_DATABASE: concrete
+      MARIADB_USER: concrete
+      MARIADB_PASSWORD: test
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
