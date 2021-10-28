@@ -16,6 +16,7 @@ RUN mkdir /concrete5/public/updates && chown  www-data /concrete5/public/applica
 
 RUN  chmod 755 /concrete5/public/application/files/ && \
 	chmod 755 /concrete5/public/application/config/ && \
+	chmod 755 /concrete5/public/application/languages/ && \
 	chmod 755 /concrete5/public/packages/ && \
 	chmod 755 /concrete5/public/updates/
 
