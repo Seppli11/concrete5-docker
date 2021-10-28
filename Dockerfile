@@ -12,9 +12,9 @@ RUN install-php-extensions gd zip pdo_mysql
 
 RUN cd / && composer create-project concrete5/composer concrete5
 
-RUN mkdir /concrete5/public/updates && chown  www-data /concrete5/public/application/files  /concrete5/public/application/config /concrete5/public/packages /concrete5/public/updates
+RUN mkdir /concrete5/public/updates /concrete5/public/application/languages && chown -R  www-data /concrete5/public/application/ /concrete5/public/packages /concrete5/public/updates
 
-RUN  chmod 755 /concrete5/public/application/files/ && \
+RUN  chmod -R 755 /concrete5/public/application/ && \
 	chmod 755 /concrete5/public/application/config/ && \
 	chmod 755 /concrete5/public/application/languages/ && \
 	chmod 755 /concrete5/public/packages/ && \
