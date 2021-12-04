@@ -5,9 +5,9 @@ COPY --from=composer /usr/bin/composer /usr/bin/composer
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
 
 RUN apt-get update && \
-      DEBIAN_FRONTEND=noninteractive apt-get -y install vim && apt-get clean && rm -r /var/lib/apt/lists/*
+	DEBIAN_FRONTEND=noninteractive apt-get -y install vim && apt-get clean && rm -r /var/lib/apt/lists/*
 
-RUN install-php-extensions gd zip pdo_mysql
+RUN install-php-extensions gd zip pdo_mysql intl
 
 
 RUN cd / && composer create-project concrete5/composer concrete5
@@ -24,4 +24,4 @@ RUN  chmod -R 755 /concrete5/public/application/ && \
 ENV APACHE_DOCUMENT_ROOT /concrete5/public
 
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf && \
-	 sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+	sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
